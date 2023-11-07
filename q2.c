@@ -253,36 +253,25 @@ void searchUpdate(struct StudentRecord students[], int numOfStudents) {
 }
 
 void topStudents(struct StudentRecord students[], int numOfStudents) {
-    int numTopStudents;
-    printf("\nDisplay top students:\n");
-    printf("Enter the number of top students to display: ");
-    scanf("%d", &numTopStudents);
+    printf("\nDisplay top student:\n");
 
-    if (numTopStudents <= 0 || numTopStudents > numOfStudents) {
-        printf("Invalid number of top students.\n");
+    if (numOfStudents <= 0) {
+        printf("no students found.\n");
         return;
     }
 
-    
-    for (int i = 0; i < numOfStudents - 1; i++) {
-        for (int j = 0; j < numOfStudents - i - 1; j++) {
-            if (students[j].AggregateMarks < students[j + 1].AggregateMarks) {
-                struct StudentRecord temp = students[j];
-                students[j] = students[j + 1];
-                students[j + 1] = temp;
-            }
+    struct StudentRecord topStudent = students[0];
+
+    for (int i = 1; i < numOfStudents; i++) {
+        if (students[i].AggregateMarks > topStudent.AggregateMarks) {
+            topStudent = students[i];
         }
     }
 
-    
-    printf("\nTop %d Students:\n", numTopStudents);
-    for (int i = 0; i < numTopStudents; i++) {
-        printf("Student %d:\n", i + 1);
-        printf("First Name: %s\n", students[i].FirstName);
-        printf("Last Name: %s\n", students[i].LastName);
-        printf("Student ID: %d\n", students[i].StudentID);
-        printf("Aggregate Marks: %d\n", students[i].AggregateMarks);
-        printf("Grade: %s\n", students[i].Grade);
-        printf("--------------------\n");
-    }
+ 
+    printf("Top Student:\n");
+    printf("First Name: %s\n", topStudent.FirstName);
+    printf("Last Name: %s\n", topStudent.LastName);
+    printf("Student ID: %d\n", topStudent.StudentID);
+    printf("Aggregate Marks: %.2d\n", topStudent.AggregateMarks);
 }
