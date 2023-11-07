@@ -112,12 +112,12 @@ void reshape(int arr[], int length, int arr2d[nRows][nCols]){
     }
 }
 
-void print_trans_matrix(int arr2d[nRows][nCols]){
-    for(int j = 0; j < nCols; j++){
-        for(int i = 0; i < nRows; i++){
-            printf("arr2d[%d][%d] = %d\n", i, j, arr2d[i][j]);
+void print_trans_matrix(int arr2d[nRows][nCols]) {
+    for (int j = 0; j < nCols; j++) {
+        for (int i = 0; i < nRows; i++) {
+            printf("%d\t", arr2d[i][j]);
         }
-        puts("");
+        printf("\n");
     }
 }
 
